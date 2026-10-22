@@ -110,7 +110,61 @@ def get_executive_overview(db: Session = Depends(get_db)):
             "status": wh.status
         })
 
-    # 9. AI Morning Briefing Synthesis
+    # 9. Inventory Health Breakdown
+    crit_count = sum(1 for inv in inventories if inv.days_of_supply < 7.0)
+    low_count = sum(1 for inv in inventories if 7.0 <= inv.days_of_supply < 14.0)
+    healthy_count = sum(1 for inv in inventories if 14.0 <= inv.days_of_supply <= 60.0)
+    excess_count = sum(1 for inv in inventories if inv.days_of_supply > 60.0)
+
+    # 10. Demand Overview & Forecast Trend (Last 21 Days Actuals + Next 14 Days Projection)
+    from sqlalchemy import func
+    from datetime import date, timedelta
+    
+    end_hist_date = date.today()
+    start_hist_date = end_hist_date - timedelta(days=21)
+
+    hist_sales_rows = (
+        db.query(DailySale.date, func.sum(DailySale.units_sold).label("total_units"))
+        .filter(DailySale.date >= start_hist_date, DailySale.date <= end_hist_date)
+        .group_by(DailySale.date)
+        .order_by(DailySale.date.asc())
+        .all()
+    )
+
+    demand_points = []
+    avg_daily_volume = 2400
+    if hist_sales_rows:
+        tot = sum(r[1] for r in hist_sales_rows)
+        avg_daily_volume = int(tot / len(hist_sales_rows))
+
+    for r in hist_sales_rows:
+        demand_points.append({
+            "date": r[0].strftime("%b %d"),
+            "actual_sales": int(r[1]),
+            "forecasted_demand": None
+        })
+
+    # Forward 14-day projection
+    for day_i in range(1, 15):
+        fut_date = end_hist_date + timedelta(days=day_i)
+        dow = fut_date.weekday()
+        mult = 1.35 if dow in (5, 6) else 0.95
+        pred_units = int(avg_daily_volume * mult)
+        demand_points.append({
+            "date": fut_date.strftime("%b %d"),
+            "actual_sales": None,
+            "forecasted_demand": pred_units
+        })
+
+    # 11. Carrier Performance Metrics
+    carrier_perf = [
+        {"carrier": "BlueDart Express", "on_time_rate": 96.2, "delayed_count": 1, "total_count": 2},
+        {"carrier": "Delhivery Prime", "on_time_rate": 93.5, "delayed_count": 0, "total_count": 1},
+        {"carrier": "Gati KWE", "on_time_rate": 89.0, "delayed_count": 1, "total_count": 1},
+        {"carrier": "Maersk Intermodal", "on_time_rate": 88.5, "delayed_count": 1, "total_count": 1},
+    ]
+
+    # 12. AI Morning Briefing Synthesis
     briefing = (
         f"Operational status: {at_risk_count} SKUs face stockout within 7 days. "
         f"Shipment SHP-8921 is delayed 48 hours, creating an imminent shortage for Aura Pro Earbuds in Delhi. "
@@ -128,7 +182,15 @@ def get_executive_overview(db: Session = Depends(get_db)):
         critical_risks=critical_risks,
         ai_morning_briefing=briefing,
         category_stock_distribution={k: round(v, 2) for k, v in cat_distribution.items()},
-        warehouse_utilization=wh_util
+        warehouse_utilization=wh_util,
+        demand_trend=demand_points,
+        inventory_health_breakdown={
+            "critical_stockout": crit_count,
+            "low_stock": low_count,
+            "healthy": healthy_count,
+            "excess_stock": excess_count
+        },
+        carrier_performance=carrier_perf
     )
 
 # =========================================================================

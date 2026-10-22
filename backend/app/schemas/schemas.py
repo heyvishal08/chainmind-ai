@@ -244,6 +244,23 @@ class RAGQueryOut(BaseModel):
     abstention_triggered: bool
 
 # Executive Dashboard Overview
+class DemandTrendPoint(BaseModel):
+    date: str
+    actual_sales: Optional[int] = None
+    forecasted_demand: Optional[int] = None
+
+class InventoryHealthBreakdown(BaseModel):
+    critical_stockout: int  # < 7 days
+    low_stock: int          # 7 - 14 days
+    healthy: int            # 14 - 60 days
+    excess_stock: int       # > 60 days
+
+class CarrierPerformanceSummary(BaseModel):
+    carrier: str
+    on_time_rate: float
+    delayed_count: int
+    total_count: int
+
 class ExecutiveOverviewKPIs(BaseModel):
     total_inventory_value_inr: float
     at_risk_products_count: int
@@ -255,3 +272,6 @@ class ExecutiveOverviewKPIs(BaseModel):
     ai_morning_briefing: str
     category_stock_distribution: Dict[str, float]
     warehouse_utilization: List[Dict[str, Any]]
+    demand_trend: List[DemandTrendPoint] = []
+    inventory_health_breakdown: Optional[InventoryHealthBreakdown] = None
+    carrier_performance: List[CarrierPerformanceSummary] = []

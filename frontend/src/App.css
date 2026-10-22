@@ -36,15 +36,15 @@
 }
 
 .brand-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-md);
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%);
-  border: 1px solid var(--border-highlight);
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: #0284C7;
+  border: 1px solid #38BDF8;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 16px rgba(6, 182, 212, 0.2);
+  color: #FFFFFF;
 }
 
 .brand-text {
@@ -53,14 +53,14 @@
 }
 
 .brand-title {
-  font-size: 1.15rem;
-  font-weight: 800;
+  font-size: 1.05rem;
+  font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--text-primary);
 }
 
 .brand-highlight {
-  color: var(--accent-cyan);
+  color: var(--accent-sky);
 }
 
 .brand-subtitle {
@@ -72,8 +72,8 @@
 .system-status-pill {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 4px 12px;
+  gap: 6px;
+  padding: 3px 10px;
   background: rgba(16, 185, 129, 0.08);
   border: 1px solid rgba(16, 185, 129, 0.25);
   border-radius: 9999px;
@@ -89,48 +89,50 @@
 .navbar-nav {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 3px;
 }
 
 .nav-tab-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 14px;
+  gap: 7px;
+  padding: 6px 12px;
   background: transparent;
-  border: none;
+  border: 1px solid transparent;
   border-radius: var(--radius-md);
   color: var(--text-secondary);
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.15s ease;
   font-family: var(--font-sans);
   position: relative;
 }
 
 .nav-tab-btn:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .nav-tab-btn.active {
-  color: var(--accent-cyan);
-  background: rgba(6, 182, 212, 0.1);
+  color: #FFFFFF;
+  background: rgba(2, 132, 199, 0.12);
+  border-color: rgba(2, 132, 199, 0.35);
   font-weight: 600;
 }
 
 .nav-tab-btn.special-tab {
-  color: #C084FC;
+  color: #38BDF8;
 }
 
 .nav-tab-btn.special-tab.active {
-  color: #E879F9;
-  background: rgba(168, 85, 247, 0.15);
+  color: #FFFFFF;
+  background: rgba(2, 132, 199, 0.2);
+  border-color: #0284C7;
 }
 
 .nav-badge {
-  background: var(--accent-rose);
+  background: #EF4444;
   color: #FFFFFF;
   font-size: 0.65rem;
   font-weight: 700;
@@ -214,294 +216,463 @@
 }
 
 /* =========================================================================
-   OVERVIEW DASHBOARD VIEW
+   OVERVIEW DASHBOARD VIEW (ENTERPRISE MINIMALIST)
    ========================================================================= */
-.daily-briefing-banner {
-  padding: 20px 24px;
-  margin-bottom: 24px;
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.12) 0%, rgba(14, 165, 233, 0.08) 100%);
-  border: 1px solid rgba(168, 85, 247, 0.25);
-  border-radius: var(--radius-lg);
-}
-
-.briefing-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.briefing-badge {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: #C084FC;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.briefing-text {
-  font-size: 0.95rem;
-  color: var(--text-primary);
-  line-height: 1.6;
-}
-
-.briefing-actions {
-  display: flex;
-  gap: 12px;
-  margin-top: 14px;
-}
-
 .kpi-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: 18px;
+  gap: 16px;
   margin-bottom: 24px;
 }
 
 .kpi-card {
-  padding: 18px 20px;
+  padding: 16px 20px;
   display: flex;
   flex-direction: column;
+  gap: 8px;
   justify-content: space-between;
 }
 
-.kpi-card-header {
+.kpi-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
 }
 
 .kpi-title {
-  font-size: 0.8rem;
+  font-size: 0.74rem;
   font-weight: 600;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
 
-.kpi-icon-badge {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.kpi-icon-badge.cyan { background: rgba(6, 182, 212, 0.15); color: #06B6D4; }
-.kpi-icon-badge.rose { background: rgba(244, 63, 94, 0.15); color: #F43F5E; }
-.kpi-icon-badge.amber { background: rgba(245, 158, 11, 0.15); color: #F59E0B; }
-.kpi-icon-badge.emerald { background: rgba(16, 185, 129, 0.15); color: #10B981; }
-.kpi-icon-badge.blue { background: rgba(56, 189, 248, 0.15); color: #38BDF8; }
-
 .kpi-value {
-  font-size: 1.65rem;
+  font-size: 1.55rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--text-primary);
-  margin-bottom: 8px;
 }
 
-.kpi-footer {
+.kpi-subtitle {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* Charts Grid: Demand Run-Rate + Inventory Health */
+.dashboard-charts-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-charts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.chart-panel {
+  padding: 22px;
+}
+
+.demand-chart-box {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.chart-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.chart-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+
+.chart-subtitle {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.chart-legend-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.legend-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.bg-blue { background: #0284C7; }
+.bg-cyan { background: #38BDF8; }
+.border-dash { border: 1px dashed #38BDF8; background: transparent; }
+
+.chart-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.chart-dot {
+  transition: r 0.15s ease, fill 0.15s ease;
+  cursor: pointer;
+}
+
+.chart-dot:hover {
+  r: 5;
+  fill: #FFFFFF;
+}
+
+.chart-metrics-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.c-metric {
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
-.kpi-subtitle {
-  font-size: 0.75rem;
+.c-label {
+  font-size: 0.68rem;
   color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
-.kpi-trend {
-  font-size: 0.72rem;
-  color: var(--accent-cyan);
-  font-weight: 500;
+.c-val {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
-.dashboard-columns-grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 22px;
-}
+.text-cyan { color: #38BDF8; }
 
-.panel-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px 22px;
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.panel-title-group {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.panel-title-group h3 {
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-
-/* Priority Queue */
-.risk-events-list {
-  padding: 14px 20px;
+/* Multi-Echelon Inventory Health Breakdown */
+.health-breakdown-panel {
+  padding: 22px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  justify-content: space-between;
 }
 
-.risk-event-item {
-  padding: 16px;
-  background: rgba(255, 255, 255, 0.025);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  transition: all 0.2s ease;
-}
-
-.risk-event-item:hover {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(244, 63, 94, 0.35);
-}
-
-.risk-item-top {
+.panel-header-clean {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 8px;
 }
 
-.risk-title-badge {
+.panel-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  margin-bottom: 20px;
+}
+
+.segmented-bar-container {
+  height: 12px;
+  width: 100%;
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+  display: flex;
+  background: #0A0E17;
+  border: 1px solid var(--border-subtle);
+  margin-bottom: 20px;
+}
+
+.segment {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.seg-critical { background: #EF4444; }
+.seg-warning { background: #F59E0B; }
+.seg-healthy { background: #10B981; }
+.seg-excess { background: #8B5CF6; }
+
+.health-metrics-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 18px;
+}
+
+.health-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  font-size: 0.8rem;
+}
+
+.h-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+}
+
+.h-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.bg-rose { background: #EF4444; }
+.bg-amber { background: #F59E0B; }
+.bg-emerald { background: #10B981; }
+.bg-purple { background: #8B5CF6; }
+
+.h-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+}
+
+.panel-footer-btn {
+  margin-top: auto;
+  padding-top: 14px;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* Lower Section: Priority Queue & Carrier Benchmarks */
+.dashboard-lower-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-lower-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.queue-card, .logistics-capacity-card {
+  padding: 22px;
+}
+
+.title-with-count {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.risk-item-title {
-  font-size: 0.92rem;
+.queue-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.queue-item {
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  transition: border-color 0.15s ease;
+}
+
+.queue-item:hover {
+  border-color: var(--border-hover);
+}
+
+.queue-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.q-title-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.q-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.q-cost {
+  font-size: 0.78rem;
   font-weight: 600;
 }
 
-.risk-impact {
-  font-size: 0.8rem;
-  font-weight: 700;
+.text-rose {
+  color: #F87171;
 }
 
-.risk-item-desc {
-  font-size: 0.85rem;
+.q-desc {
+  font-size: 0.78rem;
   color: var(--text-secondary);
-  line-height: 1.5;
+  line-height: 1.45;
   margin-bottom: 10px;
 }
 
-.risk-item-footer {
+.q-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding-top: 10px;
+  gap: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  padding-top: 8px;
 }
 
-.risk-action-rec {
+.q-rec {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+.q-rec strong {
+  color: var(--text-secondary);
+}
+
+/* Carrier Mini Table & Storage Utilization */
+.carrier-mini-table {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.mini-table-head {
+  display: grid;
+  grid-template-columns: 110px 1fr 100px;
+  gap: 12px;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.mini-table-row {
+  display: grid;
+  grid-template-columns: 110px 1fr 100px;
+  gap: 12px;
+  align-items: center;
   font-size: 0.78rem;
-  color: var(--accent-cyan);
+  padding: 6px 0;
 }
 
-/* Warehouse Capacity Meters */
-.warehouses-list {
-  padding: 16px 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.warehouse-item {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.wh-header {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.85rem;
+.carrier-label {
+  color: var(--text-primary);
   font-weight: 600;
 }
 
-.progress-bar-container {
-  height: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 9999px;
-  overflow: hidden;
-}
-
-.progress-bar-fill {
-  height: 100%;
-  border-radius: 9999px;
-  transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.fill-cyan { background: linear-gradient(90deg, #06B6D4, #38BDF8); }
-.fill-warning { background: linear-gradient(90deg, #F59E0B, #FB7185); }
-
-.wh-meta {
+.carrier-bar-cell {
   display: flex;
-  justify-content: space-between;
-  font-size: 0.72rem;
-  color: var(--text-muted);
+  align-items: center;
+  gap: 8px;
 }
 
-.category-distribution-box {
-  padding: 16px 22px;
-  border-top: 1px solid var(--border-subtle);
-}
-
-.sub-header {
-  font-size: 0.84rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  margin-bottom: 12px;
-}
-
-.category-bars {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.category-row {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.cat-label {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.8rem;
-}
-
-.cat-bar-bg {
-  height: 6px;
+.mini-bar-bg {
+  flex: 1;
+  height: 5px;
   background: rgba(255, 255, 255, 0.06);
   border-radius: 9999px;
   overflow: hidden;
 }
 
-.cat-bar-fill {
+.mini-bar-fill {
   height: 100%;
-  background: #38BDF8;
   border-radius: 9999px;
 }
+
+.fill-emerald { background: #10B981; }
+.fill-amber { background: #F59E0B; }
+
+.warehouse-mini-section {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 16px;
+  margin-top: 16px;
+}
+
+.mini-section-title {
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.wh-bars-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wh-mini-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wh-mini-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+}
+
+.wh-mini-bar-bg {
+  height: 5px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.wh-mini-bar-fill {
+  height: 100%;
+  border-radius: 9999px;
+}
+
+.fill-primary { background: #0284C7; }
+.fill-warning { background: #F59E0B; }
 
 /* =========================================================================
    FORECASTING STUDIO VIEW
@@ -746,9 +917,8 @@
 }
 
 .scenario-card.scenario-winner {
-  border-color: rgba(16, 185, 129, 0.5);
-  box-shadow: 0 0 28px rgba(16, 185, 129, 0.15);
-  background: linear-gradient(180deg, rgba(16, 185, 129, 0.06) 0%, rgba(15, 23, 42, 0.8) 100%);
+  border-color: #10B981;
+  background: rgba(16, 185, 129, 0.04);
 }
 
 .winner-badge {
