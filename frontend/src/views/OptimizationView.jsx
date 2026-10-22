@@ -52,7 +52,7 @@ export default function OptimizationView({ onNavigateTab }) {
     <div className="view-page" id="optimization-lab-view">
       <div className="view-header">
         <div>
-          <h1 className="view-title text-gradient">Optimization Lab & What-If Simulator</h1>
+          <h1 className="view-title">Optimization Lab & What-If Simulator</h1>
           <p className="view-description">
             Google OR-Tools Mixed-Integer Linear Programming (MILP) solver comparing supply delay alternatives against explicit operational constraints.
           </p>

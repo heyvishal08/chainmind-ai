@@ -53,7 +53,7 @@ export default function InventoryView({ onNavigateTab }) {
     <div className="view-page" id="inventory-intelligence-view">
       <div className="view-header">
         <div>
-          <h1 className="view-title text-gradient">Inventory Intelligence & Replenishment</h1>
+          <h1 className="view-title">Inventory Intelligence & Replenishment</h1>
           <p className="view-description">
             Multi-echelon stock health monitoring, Safety Stock ($SS$), Reorder Point ($ROP$), and days-of-supply telemetry.
           </p>

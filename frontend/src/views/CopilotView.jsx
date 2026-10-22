@@ -96,7 +96,7 @@ export default function CopilotView({ onNavigateTab, onInspectEvidence }) {
     <div className="view-page" id="copilot-studio-view">
       <div className="view-header">
         <div>
-          <h1 className="view-title text-gradient-purple">AI Supply Chain Copilot Studio</h1>
+          <h1 className="view-title">Supply Chain Copilot Studio</h1>
           <p className="view-description">
             Conversational reasoning layer connected directly to operational telemetry, predictive models, and mathematical solvers.
           </p>

@@ -9,13 +9,13 @@ import {
   FlaskConical, 
   BookOpen, 
   CheckCircle2, 
-  Sparkles 
+  Layers 
 } from 'lucide-react';
 
 export default function Navbar({ activeTab, setActiveTab, onOpenCopilot, pendingActionsCount = 0 }) {
   const navItems = [
     { id: 'overview', label: 'Overview', icon: Activity },
-    { id: 'copilot', label: 'AI Copilot', icon: Bot, isSpecial: true },
+    { id: 'copilot', label: 'Copilot Studio', icon: Bot },
     { id: 'forecasting', label: 'Forecasting', icon: TrendingUp },
     { id: 'inventory', label: 'Inventory', icon: Boxes },
     { id: 'logistics', label: 'Logistics', icon: Truck },
@@ -35,17 +35,17 @@ export default function Navbar({ activeTab, setActiveTab, onOpenCopilot, pending
       <div className="navbar-left">
         <div className="navbar-brand" onClick={() => setActiveTab('overview')}>
           <div className="brand-icon">
-            <Sparkles size={20} color="#38BDF8" />
+            <Layers size={18} color="#F3F4F6" />
           </div>
           <div className="brand-text">
-            <span className="brand-title">ChainMind <span className="brand-highlight">AI</span></span>
-            <span className="brand-subtitle">Intelligent Supply Chain Copilot</span>
+            <span className="brand-title">ChainMind <span className="brand-badge-corp">ENTERPRISE</span></span>
+            <span className="brand-subtitle">Supply Chain Control Tower</span>
           </div>
         </div>
 
         <div className="system-status-pill">
-          <span className="pulse-dot emerald"></span>
-          <span className="status-label">Engine Operational</span>
+          <span className="status-indicator emerald"></span>
+          <span className="status-label">Engine Active</span>
         </div>
       </div>
 
@@ -57,10 +57,10 @@ export default function Navbar({ activeTab, setActiveTab, onOpenCopilot, pending
             <button
               key={item.id}
               id={`nav-btn-${item.id}`}
-              className={`nav-tab-btn ${isActive ? 'active' : ''} ${item.isSpecial ? 'special-tab' : ''}`}
+              className={`nav-tab-btn ${isActive ? 'active' : ''}`}
               onClick={() => setActiveTab(item.id)}
             >
-              <Icon size={16} />
+              <Icon size={15} />
               <span>{item.label}</span>
               {item.badge && (
                 <span className="nav-badge">{item.badge}</span>
@@ -73,11 +73,11 @@ export default function Navbar({ activeTab, setActiveTab, onOpenCopilot, pending
       <div className="navbar-right">
         <button 
           id="open-copilot-drawer-btn" 
-          className="btn btn-purple ask-copilot-btn"
+          className="btn btn-secondary ask-copilot-btn"
           onClick={onOpenCopilot}
         >
-          <Bot size={16} />
-          <span>Quick Copilot</span>
+          <Bot size={15} />
+          <span>Copilot</span>
         </button>
       </div>
     </header>

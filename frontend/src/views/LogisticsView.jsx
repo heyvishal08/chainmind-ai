@@ -30,7 +30,7 @@ export default function LogisticsView({ onNavigateTab }) {
     <div className="view-page" id="logistics-shipments-view">
       <div className="view-header">
         <div>
-          <h1 className="view-title text-gradient">Logistics & Shipment Intelligence</h1>
+          <h1 className="view-title">Logistics & Shipment Intelligence</h1>
           <p className="view-description">
             Live shipment tracking with predictive machine learning delay risk, carrier SLAs, and downstream stockout correlation.
           </p>

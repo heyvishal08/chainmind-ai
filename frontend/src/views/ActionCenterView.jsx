@@ -52,7 +52,7 @@ export default function ActionCenterView() {
     <div className="view-page" id="action-center-view">
       <div className="view-header">
         <div>
-          <h1 className="view-title text-gradient">Action Center & Human-in-the-Loop Governance</h1>
+          <h1 className="view-title">Action Center & Human-in-the-Loop Governance</h1>
           <p className="view-description">
             Human approval queue for AI-proposed inventory transfers, emergency purchase orders, and logistics interventions with immutable audit logs.
           </p>

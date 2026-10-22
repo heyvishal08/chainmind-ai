@@ -1,27 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { 
-  DollarSign, 
-  AlertTriangle, 
-  Truck, 
-  ShieldAlert, 
-  Layers, 
-  ArrowUpRight, 
-  TrendingUp, 
-  Warehouse,
   ChevronRight,
   Bot,
-  Activity,
-  Package,
-  Calendar,
-  CheckCircle2,
-  Clock
 } from 'lucide-react';
 import { fetchOverview } from '../services/api';
 
 export default function OverviewView({ onOpenCopilot, onNavigateTab }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [hoveredPoint, setHoveredPoint] = useState(null);
 
   useEffect(() => {
     fetchOverview()
@@ -49,7 +35,7 @@ export default function OverviewView({ onOpenCopilot, onNavigateTab }) {
       title: 'Total Inventory Value',
       value: `INR ${(data.total_inventory_value_inr / 10000000).toFixed(2)} Cr`,
       subtitle: 'Across 4 Distribution Hubs',
-      color: 'primary'
+      color: 'blue'
     },
     {
       id: 'kpi-at-risk',
@@ -84,7 +70,7 @@ export default function OverviewView({ onOpenCopilot, onNavigateTab }) {
       title: 'Open Purchase Orders',
       value: data.open_pos_count,
       subtitle: 'In production / transit',
-      color: 'primary'
+      color: 'slate'
     }
   ];
 
@@ -141,34 +127,34 @@ export default function OverviewView({ onOpenCopilot, onNavigateTab }) {
             <p className="chart-subtitle">Daily sales actuals (past 21 days) vs. forecasted replenishment requirements (next 14 days)</p>
           </div>
           <div className="chart-legend-row">
-            <span className="legend-chip"><span className="legend-dot bg-blue"></span> Historical Sales</span>
-            <span className="legend-chip"><span className="legend-dot bg-cyan border-dash"></span> Projected Forecast</span>
+            <span className="legend-chip"><span className="legend-dot bg-blue"></span> Historical Sales Actuals</span>
+            <span className="legend-chip"><span className="legend-dot bg-slate border-dash"></span> Projected Demand</span>
           </div>
         </div>
 
         <svg viewBox={`0 0 ${chartW} ${chartH}`} className="chart-svg">
           <defs>
             <linearGradient id="histGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#0284C7" stopOpacity="0.25" />
-              <stop offset="100%" stopColor="#0284C7" stopOpacity="0.0" />
+              <stop offset="0%" stopColor="#2563EB" stopOpacity="0.08" />
+              <stop offset="100%" stopColor="#2563EB" stopOpacity="0.0" />
             </linearGradient>
           </defs>
 
           {/* Grid lines */}
-          <line x1={padX} y1={padY} x2={chartW - padX} y2={padY} stroke="#1E293B" strokeDasharray="3 3" />
-          <line x1={padX} y1={chartH / 2} x2={chartW - padX} y2={chartH / 2} stroke="#1E293B" strokeDasharray="3 3" />
-          <line x1={padX} y1={chartH - padY} x2={chartW - padX} y2={chartH - padY} stroke="#334155" />
+          <line x1={padX} y1={padY} x2={chartW - padX} y2={padY} stroke="#242731" strokeDasharray="3 3" />
+          <line x1={padX} y1={chartH / 2} x2={chartW - padX} y2={chartH / 2} stroke="#242731" strokeDasharray="3 3" />
+          <line x1={padX} y1={chartH - padY} x2={chartW - padX} y2={chartH - padY} stroke="#333846" />
 
           {/* Today Separator Line */}
-          <line x1={splitX} y1={padY} x2={splitX} y2={chartH - padY} stroke="#38BDF8" strokeWidth="1.5" strokeDasharray="4 4" />
-          <text x={splitX - 6} y={padY - 8} fill="#38BDF8" fontSize="11" textAnchor="end" className="mono">Today</text>
+          <line x1={splitX} y1={padY} x2={splitX} y2={chartH - padY} stroke="#6B7280" strokeWidth="1.25" strokeDasharray="3 3" />
+          <text x={splitX - 6} y={padY - 8} fill="#9CA3AF" fontSize="11" textAnchor="end" className="mono">Today</text>
 
           {/* Actuals Area & Line */}
           <path d={histFill} fill="url(#histGrad)" />
-          <path d={histPath} fill="none" stroke="#0284C7" strokeWidth="2.5" />
+          <path d={histPath} fill="none" stroke="#3B82F6" strokeWidth="2" />
 
           {/* Forecast Line */}
-          <path d={forecastPath} fill="none" stroke="#38BDF8" strokeWidth="2" strokeDasharray="4 4" />
+          <path d={forecastPath} fill="none" stroke="#9CA3AF" strokeWidth="1.75" strokeDasharray="4 4" />
 
           {/* Points */}
           {histPoints.map((pt, i) => (
@@ -176,8 +162,8 @@ export default function OverviewView({ onOpenCopilot, onNavigateTab }) {
               key={`h-${i}`} 
               cx={pt.x} 
               cy={pt.y} 
-              r="3" 
-              fill="#0284C7"
+              r="2.5" 
+              fill="#3B82F6"
               className="chart-dot"
             />
           ))}
@@ -187,15 +173,15 @@ export default function OverviewView({ onOpenCopilot, onNavigateTab }) {
               key={`f-${i}`} 
               cx={pt.x} 
               cy={pt.y} 
-              r="3" 
-              fill="#38BDF8" 
+              r="2.5" 
+              fill="#9CA3AF" 
               className="chart-dot"
             />
           ))}
 
           {/* Axis Labels */}
-          <text x={padX} y={chartH - 10} fill="#64748B" fontSize="11" className="mono">21 Days Ago</text>
-          <text x={chartW - padX} y={chartH - 10} fill="#64748B" fontSize="11" textAnchor="end" className="mono">+14 Days Out</text>
+          <text x={padX} y={chartH - 10} fill="#6B7280" fontSize="11" className="mono">21 Days Ago</text>
+          <text x={chartW - padX} y={chartH - 10} fill="#6B7280" fontSize="11" textAnchor="end" className="mono">+14 Days Out</text>
         </svg>
 
         <div className="chart-metrics-bar">
@@ -205,10 +191,10 @@ export default function OverviewView({ onOpenCopilot, onNavigateTab }) {
           </div>
           <div className="c-metric">
             <span className="c-label">14-Day Forward Pipeline Demand</span>
-            <span className="c-val mono text-cyan">33,880 Units</span>
+            <span className="c-val mono text-primary">33,880 Units</span>
           </div>
           <div className="c-metric">
-            <span className="c-label">Model Architecture</span>
+            <span className="c-label">Forecasting Model</span>
             <span className="c-val mono">GradientBoosted_LagEngine</span>
           </div>
         </div>
@@ -231,7 +217,7 @@ export default function OverviewView({ onOpenCopilot, onNavigateTab }) {
         <div>
           <h1 className="view-title">Executive Supply Chain Overview</h1>
           <p className="view-description">
-            Operational dashboard tracking multi-facility inventory coverage, live carrier logistics, and vendor reliability.
+            Multi-facility inventory health, replenishment demand run-rates, carrier SLA tracking, and supplier disruption triage.
           </p>
         </div>
         <div className="view-header-actions">
@@ -336,7 +322,7 @@ export default function OverviewView({ onOpenCopilot, onNavigateTab }) {
 
             <div className="health-row">
               <div className="h-left">
-                <span className="h-dot bg-purple"></span>
+                <span className="h-dot bg-slate"></span>
                 <span>Excess Working Capital (&gt; 60 Days)</span>
               </div>
               <div className="h-right mono">
@@ -387,7 +373,7 @@ export default function OverviewView({ onOpenCopilot, onNavigateTab }) {
                 <div className="q-footer">
                   <span className="q-rec"><strong>Next Step:</strong> {risk.recommended_action}</span>
                   <button 
-                    className="btn btn-primary btn-sm"
+                    className="btn btn-secondary btn-sm"
                     onClick={() => onNavigateTab('optimization')}
                   >
                     Simulate

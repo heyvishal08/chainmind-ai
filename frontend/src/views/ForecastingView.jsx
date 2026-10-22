@@ -100,9 +100,9 @@ export default function ForecastingView() {
     return (
       <div className="forecast-chart-container">
         <div className="chart-legend">
-          <div className="legend-item"><span className="legend-line line-cyan"></span> Actuals (Last 20d)</div>
-          <div className="legend-item"><span className="legend-line line-purple"></span> Forecast P50 Median</div>
-          <div className="legend-item"><span className="legend-box box-purple"></span> P10 – P90 Uncertainty Interval</div>
+          <div className="legend-item"><span className="legend-line line-blue"></span> Actuals (Last 20d)</div>
+          <div className="legend-item"><span className="legend-line line-slate"></span> Forecast P50 Median</div>
+          <div className="legend-item"><span className="legend-box box-slate"></span> P10 – P90 Uncertainty Interval</div>
         </div>
 
         <svg viewBox={`0 0 ${chartWidth} ${chartHeight}`} className="forecast-svg">
@@ -118,33 +118,33 @@ export default function ForecastingView() {
               y1={padding} 
               x2={lastHist.x} 
               y2={chartHeight - padding} 
-              stroke="rgba(56, 189, 248, 0.4)" 
+              stroke="rgba(148, 163, 184, 0.3)" 
               strokeDasharray="4 4" 
             />
           )}
 
           {/* Uncertainty Band Fill */}
-          <polygon points={bandPolygon} fill="rgba(168, 85, 247, 0.15)" />
+          <polygon points={bandPolygon} fill="rgba(148, 163, 184, 0.08)" />
 
           {/* Historical Line */}
-          <path d={histPath} fill="none" stroke="#06B6D4" strokeWidth="2.5" />
+          <path d={histPath} fill="none" stroke="#3B82F6" strokeWidth="2" />
 
           {/* Historical Points */}
           {histCoords.map((c, i) => (
-            <circle key={`hist-${i}`} cx={c.x} cy={c.y} r="3" fill="#06B6D4" />
+            <circle key={`hist-${i}`} cx={c.x} cy={c.y} r="2.5" fill="#3B82F6" />
           ))}
 
           {/* Forecast P50 Line */}
-          <polyline points={p50Points} fill="none" stroke="#A855F7" strokeWidth="2.5" strokeDasharray="3 3" />
+          <polyline points={p50Points} fill="none" stroke="#94A3B8" strokeWidth="2" strokeDasharray="3 3" />
 
           {/* Forecast P50 Points */}
           {futureCoords.map((c, i) => (
-            <circle key={`fut-${i}`} cx={c.x} cy={c.yP50} r="3" fill="#A855F7" />
+            <circle key={`fut-${i}`} cx={c.x} cy={c.yP50} r="2.5" fill="#94A3B8" />
           ))}
 
           {/* X Axis Label */}
           <text x={padding} y={chartHeight - 12} fill="#64748B" fontSize="11" className="mono">History</text>
-          <text x={chartWidth - padding - 60} y={chartHeight - 12} fill="#A855F7" fontSize="11" className="mono">Projection (P50)</text>
+          <text x={chartWidth - padding - 60} y={chartHeight - 12} fill="#94A3B8" fontSize="11" className="mono">Projection (P50)</text>
         </svg>
       </div>
     );
@@ -154,7 +154,7 @@ export default function ForecastingView() {
     <div className="view-page" id="forecasting-studio-view">
       <div className="view-header">
         <div>
-          <h1 className="view-title text-gradient">Demand Forecasting Intelligence</h1>
+          <h1 className="view-title">Demand Forecasting Intelligence</h1>
           <p className="view-description">
             Time-series machine learning backtesting with lag feature engineering and P10/P50/P90 prediction intervals.
           </p>

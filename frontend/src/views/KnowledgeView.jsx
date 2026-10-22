@@ -50,7 +50,7 @@ export default function KnowledgeView() {
     <div className="view-page" id="knowledge-hub-view">
       <div className="view-header">
         <div>
-          <h1 className="view-title text-gradient">Knowledge Hub & Grounded RAG</h1>
+          <h1 className="view-title">Knowledge Hub & Grounded RAG</h1>
           <p className="view-description">
             Semantic clause search across supplier contracts, corporate procurement DOA policies, and disruption playbooks with anti-hallucination abstention.
           </p>
@@ -63,7 +63,7 @@ export default function KnowledgeView() {
         <div className="knowledge-search-col">
           <div className="glass-panel query-box-panel">
             <div className="search-input-wrapper">
-              <Search size={18} color="#38BDF8" />
+              <Search size={18} color="#9CA3AF" />
               <input
                 id="rag-query-input"
                 type="text"
@@ -107,7 +107,7 @@ export default function KnowledgeView() {
             <div className="glass-panel rag-result-panel mt-4">
               <div className="result-header">
                 <div className="result-title-group">
-                  <Sparkles size={16} color="#A855F7" />
+                  <ShieldCheck size={16} color="#10B981" />
                   <h3>Grounded Policy Findings</h3>
                 </div>
                 {result.abstention_triggered ? (

@@ -54,7 +54,7 @@ export default function SuppliersView({ onNavigateTab }) {
     <div className="view-page" id="supplier-intelligence-view">
       <div className="view-header">
         <div>
-          <h1 className="view-title text-gradient">Supplier Intelligence & Procurement</h1>
+          <h1 className="view-title">Supplier Intelligence & Procurement</h1>
           <p className="view-description">
             Vendor scorecards, lead-time standard deviations, defect rates, and contractual purchase order generation.
           </p>
