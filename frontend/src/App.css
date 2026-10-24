@@ -1346,11 +1346,40 @@
 .carrier-metrics {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 12px;
+}
+
+.carrier-metrics > div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.metric-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.metric-val {
+  font-size: 1.05rem;
+  font-weight: 700;
 }
 
 .carrier-status-tag {
-  font-size: 0.7rem;
+  font-size: 0.72rem;
+  padding: 3px 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  width: fit-content;
+}
+
+.carrier-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .route-cell {
@@ -1753,10 +1782,11 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 520px;
+  width: 500px;
+  max-width: 100%;
   height: 100vh;
-  background: #090E1A;
-  border-left: 1px solid var(--border-highlight);
+  background: #14161C;
+  border-left: 1px solid var(--border-subtle);
   box-shadow: -8px 0 32px rgba(0, 0, 0, 0.8);
   display: flex;
   flex-direction: column;
@@ -1786,8 +1816,9 @@
   width: 36px;
   height: 36px;
   border-radius: var(--radius-md);
-  background: rgba(168, 85, 247, 0.15);
-  border: 1px solid rgba(168, 85, 247, 0.35);
+  background: #1D2027;
+  border: 1px solid var(--border-subtle);
+  color: #F3F4F6;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1817,14 +1848,14 @@
 
 .user-bubble {
   align-self: flex-end;
-  background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
+  background: #2563EB;
   color: #FFFFFF;
   border-bottom-right-radius: 2px;
 }
 
 .agent-bubble {
   align-self: flex-start;
-  background: rgba(19, 30, 54, 0.8);
+  background: #171A21;
   border: 1px solid var(--border-subtle);
   border-bottom-left-radius: 2px;
   width: 100%;
@@ -2274,5 +2305,299 @@
 .btn-full {
   width: 100%;
   justify-content: center;
+}
+
+/* =========================================================================
+   COMPREHENSIVE RESPONSIVE DESIGN & MOBILE OPTIMIZATIONS
+   ========================================================================= */
+
+/* --- TABLETS & SMALL LAPTOPS (<= 1024px) --- */
+@media (max-width: 1024px) {
+  /* Navbar: 2-Row Layout with Horizontal Tab Scroller */
+  .navbar-container {
+    flex-wrap: wrap;
+    padding: 10px 16px 6px 16px;
+    gap: 10px;
+  }
+  .navbar-left {
+    flex: 1;
+    gap: 12px;
+  }
+  .navbar-right {
+    order: 2;
+  }
+  .navbar-nav {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+    gap: 6px;
+  }
+  .navbar-nav::-webkit-scrollbar {
+    display: none;
+  }
+  .nav-tab-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+  }
+
+  /* Executive Overview Grids */
+  .dashboard-charts-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .dashboard-lower-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Forecasting */
+  .forecast-results-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Optimization Lab */
+  .scenarios-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Knowledge Hub */
+  .knowledge-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Copilot Studio */
+  .copilot-studio-grid {
+    grid-template-columns: 1fr;
+    height: auto;
+    gap: 16px;
+  }
+  .copilot-chat-window {
+    min-height: 480px;
+  }
+  .copilot-telemetry-window {
+    min-height: 340px;
+  }
+
+  /* Logistics Carrier Cards */
+  .carrier-cards-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+}
+
+/* --- MOBILE PHONES & PORTRAIT TABLETS (<= 768px) --- */
+@media (max-width: 768px) {
+  /* Main Container Spacing */
+  .main-content-container {
+    padding: 16px 14px 48px 14px;
+  }
+
+  /* View Headers */
+  .view-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .view-title {
+    font-size: 1.35rem;
+    line-height: 1.25;
+  }
+  .view-description {
+    font-size: 0.82rem;
+  }
+  .view-header-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+  }
+  .view-header-actions .btn {
+    flex: 1 1 auto;
+    justify-content: center;
+    min-height: 38px;
+  }
+
+  /* KPI Cards Grid */
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .kpi-card {
+    padding: 12px 14px;
+  }
+  .kpi-title {
+    font-size: 0.68rem;
+  }
+  .kpi-value {
+    font-size: 1.25rem;
+  }
+  .kpi-subtitle {
+    font-size: 0.68rem;
+  }
+
+  /* Controls Forms (Forecasting, Optimization, Knowledge) */
+  .forecast-controls-form,
+  .opt-controls-bar,
+  .opt-form-grid {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .forecast-controls-form .control-group,
+  .opt-controls-bar .control-group {
+    width: 100%;
+  }
+  .forecast-controls-form .btn,
+  .opt-controls-bar .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Optimization Lab Presets */
+  .presets-buttons-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .preset-btn {
+    width: 100%;
+    text-align: left;
+    justify-content: flex-start;
+  }
+
+  /* Inventory Filters */
+  .inventory-filters-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .filter-search-box {
+    width: 100%;
+  }
+  .filter-dropdowns {
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+  .filter-dropdowns select {
+    width: 100%;
+  }
+
+  /* Tables: Fluid Horizontal Scroll with smooth touch */
+  .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    border-radius: var(--radius-sm);
+  }
+  .data-table {
+    width: 100%;
+    min-width: 620px;
+  }
+
+  /* Suppliers & Carrier Cards */
+  .suppliers-grid,
+  .carrier-cards-row {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  /* Action Center Cards */
+  .action-metrics-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .action-card-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .footer-action-buttons {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+  }
+  .footer-action-buttons .btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  /* Knowledge Search */
+  .search-input-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .search-input-wrapper .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* --- SMALL MOBILE PHONES (<= 480px) --- */
+@media (max-width: 480px) {
+  .main-content-container {
+    padding: 12px 10px 36px 10px;
+  }
+  .brand-subtitle {
+    display: none;
+  }
+  .brand-title {
+    font-size: 0.88rem;
+  }
+  .system-status-pill {
+    padding: 2px 6px;
+  }
+  .status-label {
+    font-size: 0.65rem;
+  }
+
+  /* Drawers: 100% Full-Screen Bottom-to-Top or Full Slide */
+  .sku-inspector-drawer,
+  .copilot-drawer {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-left: none;
+    padding: 16px 14px;
+  }
+
+  /* Single Column KPIs on very narrow screens */
+  .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+  .inspector-metrics-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .insp-val {
+    font-size: 0.95rem;
+  }
+
+  /* Disruption Banner */
+  .disruption-summary-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .banner-right {
+    align-items: flex-start;
+  }
+
+  /* Chart Legends Wrap */
+  .chart-legend {
+    flex-direction: column;
+    gap: 8px;
+  }
 }
 
